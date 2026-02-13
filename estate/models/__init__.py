@@ -1,0 +1,5 @@
+# Import models file 
+from . import estate_property
+from . import property_type
+from . import estate_property_offer
+from . import estate_property_tag
