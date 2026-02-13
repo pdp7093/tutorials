@@ -55,6 +55,17 @@ class EstateProperty(models.Model):
         ],
         string="Garden Orientation"
     )
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        if self.garden:
+            self.garden_area = 10 
+            self.garden_orientation = 'north'
+        else:
+            self.garden_area = 0 
+            self.garden_orientation = False 
+
+
+
     total_area=fields.Float(string="Total Area",compute="_compute_total_area")
 
     @api.depends('living_area','garden_area')
