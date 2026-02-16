@@ -30,6 +30,8 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <menuitem id="menu_property_type" name="Property Types"
-        parent="estate_menu_root" action="action_property_type" />
+    <menuitem id="menu_property_type" name="Property Types and Tags" parent="estate_menu_root"
+        />
+    <menuitem id="menu_property_type1" name="Property Types"
+        parent="menu_property_type" action="action_property_type" />
 </odoo>

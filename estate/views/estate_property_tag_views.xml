@@ -35,7 +35,7 @@
         </record>
         <menuitem id="menu_property_tag" 
         name="Property Tags"
-        parent="estate.menu_property_type"
+        parent="menu_property_type"
         action="action_property_tag" />
     </data>
 </odoo>
