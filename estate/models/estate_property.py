@@ -111,8 +111,10 @@ class EstateProperty(models.Model):
             'domain' :[('property_id','=',self.id)],
             'context' :{'default_property_id':self.id},
         }
-
-
+    
+   
+     
+    # End of smart Button 
     def action_sold(self):
         for record in self:
             if record.state == 'canceled':

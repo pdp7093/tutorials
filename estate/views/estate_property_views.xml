@@ -4,7 +4,7 @@
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
-                <list decoration-success ="state =='sold'" decoration-danger="state=='canceled'">
+                <list decoration-success="state =='sold'" decoration-danger="state=='canceled'">
                     <field name="name" />
                     <field name="property_type_id" />
                     <field name="postcode" />
@@ -43,6 +43,15 @@
                                 <field name="offer_count" widget="statinfo" string="Offers" />
                             </button>
                         </div>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_invoices"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-file-invoice">
+                                <field name="invoice_count" widget="statinfo" string="Invoices" />
+                            </button>
+                        </div>
+
                         <group>
                             <field name="name" />
                             <field name="property_type_id" />
@@ -63,7 +72,8 @@
                                 <field name="bedrooms" />
                                 <field name="living_area" />
                                 <field name="facades" />
-                                <field name="tag_ids" widget="many2many_tags" options="{'color_field':'color'}" />
+                                <field name="tag_ids" widget="many2many_tags"
+                                    options="{'color_field':'color'}" />
                                 <field name="active" />
                             </group>
                             <group>
