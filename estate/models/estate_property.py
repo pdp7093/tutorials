@@ -5,12 +5,14 @@ from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = 'Real Estate Property'
+    _order = "create_date desc"
 
     name = fields.Char(string="Name",required= True)
     property_type_id= fields.Many2one(
         "estate.property.type",
         string="Property Type"
     )
+    
     buyer_id = fields.Many2one(
         "res.partner",
         string="Buyer"
@@ -89,6 +91,27 @@ class EstateProperty(models.Model):
         copy = False,
         default = 'new'
     )  
+
+    # Smart Button 
+    offer_count = fields.Integer(
+        string="Offer Count",
+        compute = "_compute_offer_count"
+    )
+    def _compute_offer_count(self):
+        for record in self:
+            record.offer_count = len(record.offer_ids)
+
+    def action_view_offers(self):
+        self.ensure_one()
+        return {
+            'type':'ir.actions.act_window',
+            'name':'Offers',
+            'view_mode': 'list,form',
+            'res_model':'estate.property.offer',
+            'domain' :[('property_id','=',self.id)],
+            'context' :{'default_property_id':self.id},
+        }
+
 
     def action_sold(self):
         for record in self:
