@@ -2,8 +2,15 @@
 <templates xml:space="preserve">
 
     <t t-name="awesome_owl.playground">
-        <div class="p-3">
-            hello world
+        <div class="container mt-5">
+            <div class="card p-4 shadow-sm d-inline-block">
+                <span class="me-3">hello world</span>
+                <Counter />
+                <Counter />
+                <Card title="'Sarkar Title'" content="normalHtml" />
+                <Card title="'Card 2'" content="safeHtml"/>
+
+            </div>
         </div>
     </t>
 

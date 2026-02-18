@@ -15,6 +15,46 @@
             </field>
         </record>
 
+        <!-- Kaban View -->
+        <record id="view_estate_property_kanban" model="ir.ui.view">
+            <field name="name">estate.property.kanban</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="property_type_id" records_draggable="false">
+                    <field name="name" />
+                    <field name="expected_price" />
+                    <field name="selling_price" />
+                    <field name="tag_ids" />
+                    <field name="state" />
+                    <templates>
+                       <t t-name="card">
+                            <div class="oe_kaban_card">
+                                <strong>
+                                    <field name="name" />
+                                </strong>
+                            </div>
+                            <div>
+                                Expected Price:
+                                <field name="expected_price" />
+                            </div>
+
+                            <t t-if="record.selling_price.raw_value" >
+                                <div>
+                                    Selling Price:
+                                    <field name="selling_price" />
+                                </div>
+                            </t>
+
+                            <div>
+                                <field name="tag_ids"></field>
+                            </div>
+                       </t> 
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
         <record id="view_estate_property_form" model="ir.ui.view">
             <field name="name">estate.property.form</field>
             <field name="model">estate.property</field>
@@ -43,14 +83,7 @@
                                 <field name="offer_count" widget="statinfo" string="Offers" />
                             </button>
                         </div>
-                        <div class="oe_button_box" name="button_box">
-                            <button name="action_view_invoices"
-                                type="object"
-                                class="oe_stat_button"
-                                icon="fa-file-invoice">
-                                <field name="invoice_count" widget="statinfo" string="Invoices" />
-                            </button>
-                        </div>
+                        
 
                         <group>
                             <field name="name" />
