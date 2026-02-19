@@ -5,12 +5,21 @@
         <div class="container mt-5">
             <div class="card p-4 shadow-sm d-inline-block">
                 <span class="me-3">hello world</span>
-                <Counter />
-                <Counter />
-                <Card title="'Sarkar Title'" content="normalHtml" />
-                <Card title="'Card 2'" content="safeHtml"/>
+                <Counter onChange="incrementSum" />
+                <Counter onChange="incrementSum" />
+                
+                <Card title="'First Card'">
+                    This is simple text.
+                </Card>
 
+                <Card title="'Counter Card'">
+                    <Counter />
+                </Card>
+                <hr/>
+
+                <h4>Sum: <t t-esc="state.sum"></t></h4>
             </div>
+            <TodoList/>
         </div>
     </t>
 

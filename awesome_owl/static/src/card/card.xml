@@ -3,9 +3,15 @@
 <templates xml:space="preserve">
     <t t-name="awesome_owl.Card">
         <div class="card p-3 shadow-sm d-inline-block me-3" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><t t-esc="props.title"/></h5>
-                <p class="card-text"> <t t-out="props.content"/></p>
+            <div class="card-header">
+                <span><t t-esc="props.title"></t></span>
+                <button t-on-click="toggle">
+                    <t t-esc="state.isOpen ? 'Hide' : 'Show'" />
+                </button>
+            </div>
+
+            <div class="card-body" t-if="state.isOpen">
+                <t t-slot="default" />
             </div>
         </div>
     </t>
